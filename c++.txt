@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+using namespace std;
+
+// Рекурсивная функция для подсчета гласных
+int countVowels(const string& str, int index = 0) {
+    // Базовый случай: если дошли до конца строки
+    if (index >= str.length()) {
+        return 0;
+    }
+    
+    // Приводим символ к нижнему регистру для проверки
+    char currentChar = tolower(str[index]);
+    
+    // Проверяем, является ли текущий символ гласной
+    bool isVowel = (currentChar == 'a' || currentChar == 'e' || 
+                    currentChar == 'i' || currentChar == 'o' || 
+                    currentChar == 'u' || currentChar == 'y');
+    
+    // Рекурсивный вызов для оставшейся части строки + текущий результат
+    return (isVowel ? 1 : 0) + countVowels(str, index + 1);
+}
+
+int main() {
+    string text = "Hello World! Programming is fun!";
+    int vowelCount = countVowels(text);
+    
+    cout << "Строка: \"" << text << "\"" << endl;
+    cout << "Количество гласных: " << vowelCount << endl;
+    
+    return 0;
+}

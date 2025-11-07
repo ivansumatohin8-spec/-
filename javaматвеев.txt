@@ -1,0 +1,27 @@
+public class VowelCounter {
+    
+    public static int countVowels(String str) {
+        return countVowelsHelper(str, 0);
+    }
+    
+    private static int countVowelsHelper(String str, int index) {
+        if (index >= str.length()) {
+            return 0;
+        }
+        
+        char currentChar = Character.toLowerCase(str.charAt(index));
+        boolean isVowel = (currentChar == 'a' || currentChar == 'e' || 
+                          currentChar == 'i' || currentChar == 'o' || 
+                          currentChar == 'u' || currentChar == 'y');
+        
+        return (isVowel ? 1 : 0) + countVowelsHelper(str, index + 1);
+    }
+    
+    public static void main(String[] args) {
+        String text = "Hello World! Programming is fun!";
+        int vowelCount = countVowels(text);
+        
+        System.out.println("Строка: \"" + text + "\"");
+        System.out.println("Количество гласных: " + vowelCount);
+    }
+}

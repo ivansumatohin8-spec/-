@@ -1,0 +1,22 @@
+def count_vowels(text, index=0):
+    """
+    Рекурсивная функция для подсчета гласных в строке
+    """
+    # Базовый случай
+    if index >= len(text):
+        return 0
+    
+    # Проверяем текущий символ
+    current_char = text[index].lower()
+    is_vowel = current_char in 'aeiouy'
+    
+    # Рекурсивный вызов для оставшейся части строки
+    return (1 if is_vowel else 0) + count_vowels(text, index + 1)
+
+# Пример использования
+if __name__ == "__main__":
+    text = "Hello World! Programming is fun!"
+    vowel_count = count_vowels(text)
+    
+    print(f'Строка: "{text}"')
+    print(f"Количество гласных: {vowel_count}")
